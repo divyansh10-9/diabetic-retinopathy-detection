@@ -1,36 +1,38 @@
-APTOS 2019 Blindness Detection: An End-to-End Deep Learning Project
+# 🩺 APTOS 2019 Blindness Detection: End-to-End Deep Learning Project
 
+## 📜 Overview
+This project is an **end-to-end deep learning application** for the [APTOS 2019 Blindness Detection](https://www.kaggle.com/competitions/aptos2019-blindness-detection) competition.  
+It leverages a **VGG16-based** deep learning model, a **Flask** web API, and **Docker** for containerization, enabling **real-time diabetic retinopathy diagnosis** from retinal images.
 
-📜 Project Overview
-This project is an end-to-end machine learning application for the APTOS 2019 Blindness Detection competition. It leverages a VGG16 deep learning model, a Flask-based web API, and Docker for containerization. The solution provides a real-time diagnosis of diabetic retinopathy from an uploaded retinal image.
+The project follows **modern MLOps best practices**, ensuring that it is **reproducible**, **portable**, and **easy to deploy**.
 
-The project is structured to follow modern MLOps best practices, ensuring that the application is reproducible, portable, and easy to deploy.
+---
 
-✨ Key Features
-Real-time Inference: Diagnoses diabetic retinopathy in real-time from user-uploaded images.
+## ✨ Key Features
+- **Real-Time Inference** — Diagnose diabetic retinopathy from uploaded retinal images instantly.
+- **Web-Based Interface** — Simple and intuitive UI for image uploads and predictions.
+- **Deep Learning Model** — Pre-trained **VGG16** with custom top layers for high accuracy.
+- **Dockerized Deployment** — Consistent environment across development and production.
+- **Reproducible Workflow** — Fully documented with all necessary files to rebuild from scratch.
 
-Web-based Interface: A simple and intuitive web front-end for image uploads and predictions.
+---
 
-Deep Learning Model: Utilizes a pre-trained VGG16 model with a custom top layer for high-accuracy classification.
-
-Containerized with Docker: The entire application is packaged into a Docker container, guaranteeing a consistent environment across development and production.
-
-Reproducible Workflow: The repository includes all the necessary files to build the application from scratch.
-
-📁 Project Structure
+## 📁 Project Structure
+```plaintext
 .
-├── app/                      # The production-ready Flask web application
-│   ├── main.py               # The core Flask backend API
-│   ├── templates/            # HTML templates for the frontend
-│   └── static/               # CSS, JS, and other static files
-├── saved_models/             # Directory to store the trained deep learning model
+├── app/                      # Flask web application
+│   ├── main.py               # Backend API
+│   ├── templates/            # HTML templates
+│   └── static/               # CSS, JS, and static assets
+├── saved_models/             # Trained deep learning model
 │   └── final_model_for_deployment.keras
-├── notebooks/                # Jupyter notebooks for model training and experimentation
+├── notebooks/                # Jupyter notebooks for experimentation
 │   └── model_comparison.ipynb
-├── .gitignore                # Files and directories ignored by Git
-├── Dockerfile                # Instructions for building the Docker image
-├── requirements.txt          # Python dependencies for the application
-└── README.md                 # Project README file (this file)
+├── .gitignore                 # Git ignore file
+├── Dockerfile                 # Docker build instructions
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation
+
 🚀 Setup and Installation
 1. Clone the Repository
 First, clone this repository to your local machine and navigate to the project directory.
