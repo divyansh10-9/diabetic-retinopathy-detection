@@ -1,4 +1,6 @@
 APTOS 2019 Blindness Detection: An End-to-End Deep Learning Project
+
+
 📜 Project Overview
 This project is an end-to-end machine learning application for the APTOS 2019 Blindness Detection competition. It leverages a VGG16 deep learning model, a Flask-based web API, and Docker for containerization. The solution provides a real-time diagnosis of diabetic retinopathy from an uploaded retinal image.
 
