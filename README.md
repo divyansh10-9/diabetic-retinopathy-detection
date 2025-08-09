@@ -33,33 +33,54 @@ The project follows **modern MLOps best practices**, ensuring that it is **repro
 ├── requirements.txt           # Python dependencies
 └── README.md                  # Project documentation
 
-🚀 Setup and Installation
-1. Clone the Repository
-First, clone this repository to your local machine and navigate to the project directory.
+## 🚀 Setup & Installation
 
-Bash
-
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/<your-username>/<your-repository-name>.git
 cd <your-repository-name>
-2. Acquire the Dataset (For Training Only)
-The dataset and trained model are not included in this repository. To replicate the training process, you must download the APTOS 2019 Blindness Detection dataset from Kaggle and place the files inside a data/ directory in the project root.
 
-3. Run the Application Locally with Docker
-The easiest way to get the application running is by using Docker.
+### 2️⃣ Acquire the Dataset (For Training Only)
 
-1. Build the Docker Image
-The Dockerfile contains all the instructions to create a self-contained image of your application. Run the following command from the project's root directory:
+⚠ **Note:** The dataset and trained model are **not included** in this repository.
 
-Bash
+To replicate the training process:
 
+1. Download the **APTOS 2019 Blindness Detection** dataset from [Kaggle](https://www.kaggle.com/competitions/aptos2019-blindness-detection).
+2. Create a folder named `data/` in the project root.
+3. Place the dataset files inside it as follows:
+
+```plaintext
+data/
+ ├── train_images/
+ ├── test_images/
+ └── train.csv
+
+
+### 3️⃣ Run the Application Locally with Docker
+
+The easiest way to get the application running is by using **Docker**.
+
+---
+
+#### 1️⃣ Build the Docker Image
+The `Dockerfile` contains all the instructions to create a self-contained image of your application.  
+Run the following command from the project's root directory:
+
+```bash
 docker build -t aptos-app .
 This may take a few minutes as it downloads the base Python image and installs all dependencies.
 
-2. Run the Docker Container
-Once the image is built, run it as a container. This command maps the container's port 8000 to your local machine's port 8000.
+#### 2️⃣ Run the Docker Container
+Once the image is built, run it as a container.  
+This command maps the container's port **8000** to your local machine's port **8000**:
 
-Bash
-
+```bash
 docker run -p 8000:8000 aptos-app
-3. Access the Application
-Open your web browser and navigate to http://localhost:8000. You should see the web application running, ready for you to upload a retinal image for a diagnosis.
+
+#### 3️⃣ Access the Application
+Open your web browser and navigate to:
+
+[http://localhost:8000](http://localhost:8000)
+
+You should see the web application running, ready for you to upload a retinal image for a diagnosis.
