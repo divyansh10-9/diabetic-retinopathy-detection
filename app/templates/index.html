@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Retinopathy Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetic Retinopathy Detection</h1>
+        <p>Upload a retinal scan image to get a diagnosis.</p>
+
+        <form id="upload-form">
+            <input type="file" id="file-input" name="file" accept="image/png, image/jpeg">
+            <button type="submit" id="submit-button">Predict</button>
+        </form>
+
+        <div id="result" class="hidden">
+            <h2 id="result-text"></h2>
+            <p id="diagnosis-description"></p>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Predicting...</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const fileInput = document.getElementById('file-input');
+        const resultDiv = document.getElementById('result');
+        const resultText = document.getElementById('result-text');
+        const descriptionText = document.getElementById('diagnosis-description');
+        const loadingDiv = document.getElementById('loading');
+
+        const diagnosisMap = {
+            0: "No Diabetic Retinopathy",
+            1: "Mild Diabetic Retinopathy",
+            2: "Moderate Diabetic Retinopathy",
+            3: "Severe Diabetic Retinopathy",
+            4: "Proliferative Diabetic Retinopathy"
+        };
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (fileInput.files.length === 0) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            loadingDiv.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                loadingDiv.classList.add('hidden');
+
+                if (response.ok) {
+                    const diagnosis = data.diagnosis;
+                    resultText.textContent = `Diagnosis: ${diagnosisMap[diagnosis]}`;
+                    descriptionText.textContent = `Predicted class: ${diagnosis}`;
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+
+            } catch (error) {
+                loadingDiv.classList.add('hidden');
+                alert("An error occurred. Please try again.");
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

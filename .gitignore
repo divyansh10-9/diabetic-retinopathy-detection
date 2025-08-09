@@ -1,0 +1,19 @@
+# Virtual Environment
+aptos-env/
+
+# Datasets and model files
+data/
+saved_models/
+
+# Other files to ignore
+*.keras
+*.h5
+*.pkl
+*.pth
+
+# Docker and Python temporary files
+__pycache__/
+
+# IDE and OS files
+.vscode/
+.DS_Store
